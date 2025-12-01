@@ -1,0 +1,43 @@
+[package]
+name = "rsocr"
+version = "0.1.0"
+edition = "2024"
+description = "一个简单的 OCR 库，提供图片处理和 OCR API 调用功能"
+authors = ["Theo Young <sgnay@outlook.com>"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/sgnay/rsocr"
+readme = "README.md"
+build = "build.rs"
+
+# 配置为库项目
+[lib]
+name = "rsocr"
+path = "src/lib.rs"
+
+# 保留二进制可执行文件
+[[bin]]
+name = "rsocr"
+path = "src/main.rs"
+
+[dependencies]
+base64 = "0.21"
+reqwest = { version = "0.11", features = ["blocking", "json"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+clap = { version = "4.4", features = ["derive"] }
+toml = "0.8"
+log = "0.4"
+env_logger = "0.11"
+chrono = { version = "0.4", features = ["serde", "clock"] }
+slint = "1.11.0"
+rfd = "0.14"
+arboard = { version = "3.6.1", features = ["wayland-data-control"] }
+libc = "0.2"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+thiserror = "2.0"
+
+[build-dependencies]
+slint-build = "1.11.0"
+
+[dev-dependencies]
+tempfile = "3.10"
